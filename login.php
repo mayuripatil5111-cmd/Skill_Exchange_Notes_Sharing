@@ -54,9 +54,7 @@ else {
     <input type="submit" name="login" class="login login-submit" value="login">
   </form>
     
-  <div class="login-help">
-    <a href="signup.php">Register</a> • <a href="recoverpassword.php">Forgot Password</a>
-  </div>
+ 
 </div>
 
   <script src='css/jquery.min.js'></script>
