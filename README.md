@@ -1,21 +1,19 @@
-# College-Notes-Gallery
+# Skill_Exchange_Notes_Sharing
 ## A notes management system which helps users to upload,download and manage notes of their particular course. The whole system is coded in core PHP and MySqli
 
 
 
-College-Notes-Gallery ->
+Skill_Exchange_Notes_Sharing ->
 
 ![home](https://user-images.githubusercontent.com/16975766/28489136-9c9930a0-6ed8-11e7-85a0-af4d73f63cd7.png)
 
 
 
-College-Notes-Gallery Admin Panel ->
+Skill_Exchange_Notes_Sharing Admin Panel ->
 
 ![admin](https://user-images.githubusercontent.com/16975766/28489144-e2c938ae-6ed8-11e7-90f2-f104f34eeabb.png)
 
 
-### Full Demo
-[College Notes Gallery](https://www.youtube.com/watch?v=oJ7rNVoCPG0&t)
 
 ### Requirements 
 
@@ -24,10 +22,10 @@ College-Notes-Gallery Admin Panel ->
 - Ability to write .htaccess file for apache mod_rewrite
 
 ### Installation
-- Upload College-Notes-Gallery to the directory of your choice. (E.g :  /var/www/html/college-notes-gallery )
+- Upload College-Notes-Gallery to the directory of your choice. (E.g :  /var/www/html/Skill_Exchange_Notes_Sharing )
 - Import MySql Db file to your database software (E.g : PhpMyAdmin -> Create DB -> Import notes.sql  )
 - Configure connection between your database and server by modifying the /includes/connection.php file
-- Navigate to the installation in your browser ( E.g :  http://localhost/college-notes-gallery )
+- Navigate to the installation in your browser ( E.g :  http://localhost/Skill_Exchange_Notes_Sharing )
 - Done :)
 
 ### Login Details
@@ -59,13 +57,4 @@ password: userpass
 - Add login with facebook and google+ option
 - Add search notes option
 
-### Issues
 
-Please log any issues found in the repository 
-
-### References 
-www.freshdesignweb.com
-Fashion Responsive Slider
-
-### License
-College Notes Gallery is released under the MIT License
