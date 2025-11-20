@@ -105,7 +105,7 @@ echo "<script>alert('file size is not proper');</script>";
 	<div class="form-group">
 		<label for="post_tags">Short Note Description</label>
 		<input type="text" name="description" class="form-control" placeholder="Eg: Php Tutorial File includes basic php programming ...." value="<?php if(isset($_POST['upload'])) {
-            echo $file_description;  } ?>" required="" ">
+            echo $file_description;  } ?>" required="" >
 	</div>
 
 	 <div class="form-group">
