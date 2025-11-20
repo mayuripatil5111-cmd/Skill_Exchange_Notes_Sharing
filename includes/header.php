@@ -5,7 +5,7 @@ include('connection.php');
 <!DOCTYPE html>
 <html>
 <head>
-<title>Online Notes Sharing</title>
+<title>Online Skill_Exchange_Notes_Sharing</title>
  <script src="dashboard/js/tinymce/tinymce.min.js"></script>
     <script src="dashboard/js/tinymce/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
