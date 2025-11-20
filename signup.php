@@ -105,10 +105,16 @@ else {
             
             <p class="contact"><label for="course">I teach/study..</label></p>
             <select class="select-style gender" name="course">
-            <option value="Computer Science">Computer Sc Engineering</option>
+            <option value="Computer Science">Computer Engineering</option>
+            <option value="Computer Science and Engineering">Computer Science and Engineering (Data Science)</option>
             <option value="Electrical">Electrical Engineering</option>
             <option value="Mechanical">Mechanical Engineering</option>
-            </select><br><br>
+            <option value="Electronics and Telecommunication">Electronics and Telecommunication Engineering</option>
+            <option value="Civil">Civil Engineering</option> 
+            <option value="IT">IT Engineering</option>
+            <option value="AIML">AIML Engineering</option>
+            <option value="AIDS">AIDS Engineering</option> 
+          </select><br><br>
             
             <input class="buttom" name="signup" id="submit" tabindex="5" value="Sign me up!" type="submit">    
    </form> 
