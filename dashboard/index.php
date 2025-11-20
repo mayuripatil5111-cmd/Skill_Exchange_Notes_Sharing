@@ -19,7 +19,7 @@
 <?php if($_SESSION['role'] == 'admin') {
 ?>
 <h3 class="page-header">
-                            <center> <marquee width = 70% ><font color="green" > Notes uploaded by various users</font></marquee></center>
+                            <center> <marquee width = 70% ><font color="green" > Skills, Notes uploaded by various Teachers and Students </font></marquee></center>
                         </h3>
 <div class="row">
 <div class="col-lg-12">
@@ -123,7 +123,7 @@ else {
 
 
  <h3 class="page-header">
-                            <center> <marquee width = 70% ><font color="green" ><?php echo $_SESSION['course']; ?> Engineering </font><font color="brown"> notes uploaded by various users</font></marquee></center>
+                            <center> <marquee width = 70% ><font color="green" ><?php echo $_SESSION['course']; ?> Engineering </font><font color="brown"> skills, notes uploaded by various users</font></marquee></center>
                         </h3>
 
                     </div>
