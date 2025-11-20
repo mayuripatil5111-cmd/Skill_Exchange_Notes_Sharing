@@ -123,7 +123,7 @@ else {
 
 
  <h3 class="page-header">
-                            <center> <marquee width = 70% ><font color="green" ><?php echo $_SESSION['course']; ?> Engineering </font><font color="brown"> skills, notes uploaded by various users</font></marquee></center>
+                            <center> <marquee width = 70% ><font color="green" ><?php echo $_SESSION['course']; ?> Engineering ! </font><font color="brown"> Skills, Notes Uploaded By Various Users</font></marquee></center>
                         </h3>
 
                     </div>
