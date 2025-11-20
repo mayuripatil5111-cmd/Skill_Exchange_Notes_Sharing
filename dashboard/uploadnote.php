@@ -20,7 +20,7 @@ header("location: index.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            UPLOAD NOTE
+                            UPLOAD Skill or NOTE
                         </h1>
 
 <?php
@@ -97,7 +97,7 @@ echo "<script>alert('file size is not proper');</script>";
 
 
 	<div class="form-group">
-		<label for="post_title">Note Title</label>
+		<label for="post_title">Skill or Note Title</label>
 		<input type="text" name="title" class="form-control" placeholder="Eg: Php Tutorial File"  value = "<?php if(isset($_POST['upload'])) {
             echo $file_title; } ?>" required="">
 	</div>
@@ -109,11 +109,11 @@ echo "<script>alert('file size is not proper');</script>";
 	</div>
 
 	 <div class="form-group">
-        <label for="post_image">Select File</label><font color="brown"> (allowed file type: 'pdf','doc','ppt','txt','zip' | allowed maximum size: 30 mb ) </font>
+        <label for="post_image">Select File</label><font color="brown"> (allowed file type: 'pdf','doc','ppt','txt','zip', 'mp4' | allowed maximum size: 30 mb ) </font>
 		<input type="file" name="file"> 
      </div>
 
-<button type="submit" name="upload" class="btn btn-primary" value="Upload Note">Upload Note</button>
+<button type="submit" name="upload" class="btn btn-primary" value="Upload Note">Upload Skill or Note</button>
 <br>
 <br>
 </form>
