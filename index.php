@@ -37,7 +37,7 @@
 	    	<li>
 	    		<a href="#"><img src="images/slider/slide1.jpg" alt="" title=""/></a>
 	    		<div class="flex-caption">
-                     <div class="caption_title_line"><h2>Easy Notes Management</h2><p>Now easily manage all kind of notes by uploading them here.</p></div>
+                     <div class="caption_title_line"><h2>Easy Skill_Exchange_Notes_Sharing </h2><p>Now easily manage all kind of notes by uploading them here.</p></div>
                 </div>
 	    	</li>
 	    	<li>
