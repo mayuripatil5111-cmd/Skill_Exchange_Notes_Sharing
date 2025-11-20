@@ -21,9 +21,9 @@ header("location: index.php");
                     <div class="col-lg-12">
                         <h1 class="page-header">
                         <div class="col-xs-4">
-            <a href="uploadnote.php" class="btn btn-primary">Add New Note</a>
+            <a href="uploadnote.php" class="btn btn-primary">Add New Skill and Note</a>
             </div>
-                         MY NOTES
+                         MY Skills, NOTES
                         </h1>
                          
 <div class="row">
