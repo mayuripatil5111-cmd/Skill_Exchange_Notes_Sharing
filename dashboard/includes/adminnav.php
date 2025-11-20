@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Online Notes Sharing</a>
+                <a class="navbar-brand" href="index">Online Skill_Exchange_Notes_Sharing</a>
             </div>
             
             <ul class="nav navbar-right top-nav">
@@ -58,13 +58,13 @@
                     <?php } else { ?>
 
                     <li>
-                         <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-users"></i> My Notes <i class="fa fa-fw fa-caret-down"></i></a>
+                         <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-users"></i> My Skills and Notes <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="user" class="collapse">
                             <li>
-                                <a href="./notes.php">View All Notes</a>
+                                <a href="./notes.php">View All Skills and Notes</a>
                             </li>
                             <li>
-                                <a href="./uploadnote.php">Upload Note</a>
+                                <a href="./uploadnote.php">Upload Skills and Note</a>
                             </li>
                             
                         </ul>
