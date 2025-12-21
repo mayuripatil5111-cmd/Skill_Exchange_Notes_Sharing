@@ -1,68 +1,46 @@
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
-<!-- FlexSlider CSS -->
-<link rel="stylesheet" href="css/flexslider.css">
+<!-- CSS -->
 <link rel="stylesheet" href="css/home.css">
 
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>
-<!-- FlexSlider JS -->
-<script src="js/jquery.flexslider-min.js"></script>
 
-<script>
-$(window).on('load', function () {
-  $('.flexslider').flexslider({
-    animation: "fade",
-    slideshowSpeed: 4000,
-    animationSpeed: 600,
-    controlNav: true,
-    directionNav: false
-  });
-});
-</script>
+<!-- ================= IMAGE CARD SLIDER ================= -->
+<div class="image-card-container">
+  <div class="image-card active">
+    <img src="images/slider/slide1.jpg" alt="Slide 1">
+    <div class="card-caption">
+      <h2>Skill & Notes Sharing Platform</h2>
+      <p>Upload, share and learn anytime, anywhere</p>
+    </div>
+  </div>
 
-<!-- ================= SLIDER ================= -->
-<div class="slider_container">
-  <div class="flexslider">
-    <ul class="slides">
+  <div class="image-card">
+    <img src="images/slider/slide2.jpg" alt="Slide 2">
+    <div class="card-caption">
+      <h2>Upload Notes & Skills</h2>
+      <p>PDF, PPT, DOC, Videos & more</p>
+    </div>
+  </div>
 
-      <li>
-        <img src="images/slider/slide1.jpg" alt="Slide 1">
-        <div class="flex-caption">
-          <h2>Skill & Notes Sharing Platform</h2>
-          <p>Upload, share and learn anytime, anywhere</p>
-        </div>
-      </li>
+  <div class="image-card">
+    <img src="images/slider/slide3.jpg" alt="Slide 3">
+    <div class="card-caption">
+      <h2>Admin Controlled System</h2>
+      <p>Secure & verified content</p>
+    </div>
+  </div>
 
-      <li>
-        <img src="images/slider/slide2.jpg" alt="Slide 2">
-        <div class="flex-caption">
-          <h2>Upload Notes & Skills</h2>
-          <p>PDF, PPT, DOC, Videos & more</p>
-        </div>
-      </li>
-
-      <li>
-        <img src="images/slider/slide3.jpg" alt="Slide 3">
-        <div class="flex-caption">
-          <h2>Admin Controlled System</h2>
-          <p>Secure & verified content</p>
-        </div>
-      </li>
-
-      <li>
-        <img src="images/slider/slide4.jpg" alt="Slide 4">
-        <div class="flex-caption">
-          <h2>For Students & Teachers</h2>
-          <p>Learn together, grow together</p>
-        </div>
-      </li>
-
-    </ul>
+  <div class="image-card">
+    <img src="images/slider/slide4.jpg" alt="Slide 4">
+    <div class="card-caption">
+      <h2>For Students & Teachers</h2>
+      <p>Learn together, grow together</p>
+    </div>
   </div>
 </div>
-<!-- =============== SLIDER END =============== -->
 
 <!-- ================= FEATURES ================= -->
 <section class="features">
@@ -90,3 +68,18 @@ $(window).on('load', function () {
 </section>
 
 <?php include 'includes/footer.php'; ?>
+
+<!-- ================= IMAGE CARD JS ================= -->
+<script>
+let currentIndex = 0;
+const cards = document.querySelectorAll('.image-card');
+
+function showNextCard() {
+  cards[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % cards.length;
+  cards[currentIndex].classList.add('active');
+}
+
+// Change image every 4 seconds
+setInterval(showNextCard, 4000);
+</script>
