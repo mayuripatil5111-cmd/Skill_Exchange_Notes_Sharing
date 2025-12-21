@@ -191,8 +191,25 @@ while ($row = mysqli_fetch_array($run_query)) {
 
 
 <script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
-  
-    <script src="js/bootstrap.min.js"></script>
+<!-- AUTO ACTIVE SIDEBAR -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const currentUrl = window.location.href;
+
+  document.querySelectorAll(".side-nav a").forEach(link => {
+    if (currentUrl.includes(link.getAttribute("href"))) {
+      link.classList.add("active");
+
+      const parentUl = link.closest("ul.collapse");
+      if (parentUl) {
+        parentUl.classList.add("in");
+      }
+    }
+  });
+});
+</script>
+
 </body>
 </html>
