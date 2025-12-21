@@ -69,6 +69,7 @@
 
 <?php include 'includes/footer.php'; ?>
 
+
 <!-- ================= IMAGE CARD JS ================= -->
 <script>
 let currentIndex = 0;
