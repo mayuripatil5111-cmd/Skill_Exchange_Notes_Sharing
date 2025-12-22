@@ -1,118 +1,128 @@
-<?php 
-include 'includes/connection.php';
-include 'includes/adminheader.php';
+<?php include 'includes/connection.php'; ?>
+<?php include 'includes/adminheader.php'; ?>
 
+<?php 
+// Admin should not upload
 if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
     header("location: index.php");
-    exit;
+    exit();
 }
 ?>
 
 <div id="wrapper">
-
 <?php include 'includes/adminnav.php'; ?>
 
 <div id="page-wrapper">
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    UPLOAD Skill or NOTE
-                </h1>
+<div class="row">
+<div class="col-lg-12">
+<h1 class="page-header">UPLOAD Skill or NOTE</h1>
 
 <?php
 if (isset($_POST['upload'])) {
 
     require "../gump.class.php";
     $gump = new GUMP();
-    $_POST = $gump->sanitize($_POST); 
+    $_POST = $gump->sanitize($_POST);
 
-    $gump->validation_rules(array(
-        'title'       => 'required|max_len,60|min_len,3',
-        'description' => 'required|max_len,150|min_len,3',
-    ));
-    $gump->filter_rules(array(
-        'title'       => 'trim|sanitize_string',
-        'description' => 'trim|sanitize_string',
-    ));
+    $gump->validation_rules([
+        'title' => 'required|min_len,3|max_len,60',
+        'description' => 'required|min_len,3|max_len,150',
+    ]);
 
-    $validated_data = $gump->run($_POST);
+    $validated = $gump->run($_POST);
 
-    if ($validated_data === false) {
-        echo '<center><font color="red">' . $gump->get_readable_errors(true) . '</font></center>';
-        $file_title = $_POST['title'];
-        $file_description = $_POST['description'];
+    if ($validated === false) {
+        echo "<center style='color:red'>" . $gump->get_readable_errors(true) . "</center>";
     } else {
-        $file_title = $validated_data['title'];
-        $file_description = $validated_data['description'];
 
-        if (isset($_SESSION['id'])) {
-            $file_uploader   = $_SESSION['username'];
-            $file_uploaded_to = $_SESSION['course'];
-        }
+        $file_title = $validated['title'];
+        $file_description = $validated['description'];
+        $file_uploader = $_SESSION['username'];
+        $file_uploaded_to = $_SESSION['course'];
 
-        // File upload handling
-        $file = $_FILES['file']['name'];
-        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-        $validExt = array('pdf', 'txt', 'doc', 'docx', 'ppt', 'zip', 'mp4');
-
-        if (empty($file)) {
-            echo "<script>alert('Please attach a file');</script>";
-        } else if ($_FILES['file']['size'] <= 0 || $_FILES['file']['size'] > 30720000) {
-            echo "<script>alert('File size is not proper. Maximum allowed: 30 MB');</script>";
-        } else if (!in_array($ext, $validExt)) {
-            echo "<script>alert('Not a valid file type');</script>";
+        if (!isset($_FILES['file']) || $_FILES['file']['error'] !== 0) {
+            echo "<script>alert('Please select a valid file');</script>";
         } else {
-            $folder = 'allfiles/';
-            $notefile = rand(1000, 1000000) . '.' . $ext;
 
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $folder . $notefile)) {
-                $query = "INSERT INTO uploads(file_name, file_description, file_type, file_uploader, file_uploaded_to, file) 
-                          VALUES ('$file_title', '$file_description', '$ext', '$file_uploader', '$file_uploaded_to', '$notefile')";
-                $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+            $file = $_FILES['file'];
+            $filename = $file['name'];
+            $filesize = $file['size'];
+            $tmp = $file['tmp_name'];
 
-                if (mysqli_affected_rows($conn) > 0) {
-                    echo "<script>
-                        alert('File uploaded successfully. It will be published after admin approval.');
+            $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+            // ✅ Allowed extensions
+            $allowedExt = ['pdf','doc','docx','ppt','txt','zip','mp4'];
+
+            // ✅ 30MB limit
+            if ($filesize > 31457280) {
+                echo "<script>alert('File size must be less than 30MB');</script>";
+            }
+            elseif (!in_array($ext, $allowedExt)) {
+                echo "<script>alert('Invalid file type');</script>";
+            }
+            else {
+
+                $folder = 'allfiles/';
+                $newname = uniqid() . '.' . $ext;
+
+                if (move_uploaded_file($tmp, $folder.$newname)) {
+
+                    $query = "INSERT INTO uploads
+                    (file_name, file_description, file_type, file_uploader, file_uploaded_to, file)
+                    VALUES
+                    ('$file_title','$file_description','$ext','$file_uploader','$file_uploaded_to','$newname')";
+
+                    if (mysqli_query($conn, $query)) {
+                        echo "<script>
+                        alert('File uploaded successfully. Awaiting admin approval.');
                         window.location.href='notes.php';
-                    </script>";
+                        </script>";
+                    } else {
+                        echo "<script>alert('Database error');</script>";
+                    }
+
                 } else {
-                    echo "<script>alert('Error while uploading. Try again.');</script>";
+                    echo "<script>alert('Upload failed');</script>";
                 }
-            } else {
-                echo "<script>alert('Error moving uploaded file.');</script>";
             }
         }
     }
 }
 ?>
 
-<form role="form" action="" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="post_title">Skill or Note Title</label>
-        <input type="text" name="title" class="form-control" placeholder="Eg: Php Tutorial File" 
-               value="<?php if(isset($file_title)) echo htmlspecialchars($file_title); ?>" required>
-    </div>
+<!-- ================= FORM ================= -->
+<form id="uploadForm" method="POST" enctype="multipart/form-data">
 
-    <div class="form-group">
-        <label for="post_description">Short Note Description</label>
-        <input type="text" name="description" class="form-control" placeholder="Eg: Php Tutorial File includes basic php programming ...." 
-               value="<?php if(isset($file_description)) echo htmlspecialchars($file_description); ?>" required>
-    </div>
+<div class="form-group">
+    <label>Skill or Note Title</label>
+    <input type="text" name="title" class="form-control" required>
+</div>
 
-    <div class="form-group">
-        <label for="post_file">Select File</label>
-        <font color="brown">(allowed file types: pdf, doc, docx, ppt, txt, zip, mp4 | max size: 30 MB)</font>
-        <input type="file" name="file" required>
-    </div>
+<div class="form-group">
+    <label>Short Description</label>
+    <input type="text" name="description" class="form-control" required>
+</div>
 
-    <button type="submit" name="upload" class="btn btn-primary">Upload Skill or Note</button>
-    <br><br>
+<div class="form-group">
+    <label>Select File</label>
+    <p style="color:brown">
+        Allowed: pdf, doc, docx, ppt, txt, zip, mp4 | Max: 30MB
+    </p>
+    <input type="file" name="file" class="form-control" id="fileInput" required>
+</div>
+
+<!-- VIDEO PREVIEW -->
+<video id="videoPreview" controls style="display:none;width:100%;max-height:300px;margin-top:10px;"></video>
+
+<button type="submit" name="upload" class="btn btn-primary">
+    Upload Skill or Note
+</button>
+
 </form>
 
-</div>
 </div>
 </div>
 </div>
@@ -120,5 +130,22 @@ if (isset($_POST['upload'])) {
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+<!-- VIDEO PREVIEW SCRIPT -->
+<script>
+document.getElementById("fileInput").addEventListener("change", function () {
+    const file = this.files[0];
+    const video = document.getElementById("videoPreview");
+
+    if (file && file.type === "video/mp4") {
+        video.src = URL.createObjectURL(file);
+        video.style.display = "block";
+    } else {
+        video.style.display = "none";
+        video.src = "";
+    }
+});
+</script>
+
 </body>
 </html>
