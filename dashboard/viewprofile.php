@@ -70,7 +70,9 @@ else {
                             <br/>
                             <font color="brown" > Bio: </font> <?php echo $bio; ?>
                             </p>
-                            
+                            <a href="chat.php?user=<?php echo $user; ?>" class="btn btn-info">Send Message</a>
+
+
                         
                         </div>
                     </div>
