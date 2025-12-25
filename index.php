@@ -10,7 +10,7 @@
 <!-- ================= IMAGE CARD SLIDER ================= -->
 <div class="image-card-container">
   <div class="image-card active">
-    <img src="images/slider/slide1.jpg" alt="Slide 1">
+    <img src="images/slider/slide11.jpg" alt="Slide 1">
     <div class="card-caption">
       <h2>Skill & Notes Sharing Platform</h2>
       <p>Upload, share and learn anytime, anywhere</p>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="image-card">
-    <img src="images/slider/slide2.jpg" alt="Slide 2">
+    <img src="images/slider/slide22.jpg" alt="Slide 2">
     <div class="card-caption">
       <h2>Upload Notes & Skills</h2>
       <p>PDF, PPT, DOC, Videos & more</p>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="image-card">
-    <img src="images/slider/slide3.jpg" alt="Slide 3">
+    <img src="images/slider/slide33.jpg" alt="Slide 3">
     <div class="card-caption">
       <h2>Admin Controlled System</h2>
       <p>Secure & verified content</p>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="image-card">
-    <img src="images/slider/slide4.jpg" alt="Slide 4">
+    <img src="images/slider/slide44.jpg" alt="Slide 4">
     <div class="card-caption">
       <h2>For Students & Teachers</h2>
       <p>Learn together, grow together</p>
