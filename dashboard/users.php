@@ -26,7 +26,7 @@ include("includes/adminheader.php");
                                 <th>Role</th>
                                 <th>Course</th>
                                 <th>Delete</th>
-                                <th>Message</th> <!-- New column -->
+                                
                             </tr>
                         </thead>
 
@@ -55,12 +55,7 @@ include("includes/adminheader.php");
                                         href='users.php?delete=$user_id'>
                                         <i class='fa fa-times fa-lg'></i> Delete
                                         </a>
-                                      </td>";
-                                // ===== Send Message button =====
-                                echo "<td>
-        <a href='chat.php?user=$username' class='btn btn-info btn-sm'>Send Message</a>
-      </td>";
-                                echo "</tr>";
+                                      </td>";                              
                             }
                         }
                         ?>
